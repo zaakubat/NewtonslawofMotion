@@ -1,0 +1,467 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id= "pagewrap">
+
+        <div class="header-container">
+            <header class="wrapper clearfix">
+                <h1 class="title">Simulation of the  Newton's 2nd Law of Motion : F = m a </h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="motionlaw.html">Simulation</a></li>
+                        <li><a href="glossary.html">Glossary</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div> <!--endofheader-container-->
+
+
+         <div class="main-container">
+
+           <!-- <div class="main wrapper clearfix"> -->
+
+                <article> 
+                    <header>
+                        <h2>a (ms<sup>2</sup>) = F (N) / m (Kg)</h2>
+                      <div> 
+                          <!-- Accelaration -->
+                          <section id="content2">
+                          	<div>
+                            <svg height="20" width="20">
+                            <circle cx="10" cy="10" r="5" stroke="red" stroke-width="3" fill="red" />
+                            </svg>
+                              Red ball : a <input type="text"  size="5" id="textField2" class="colored" disabled> =
+
+                              F 
+                              <input type="text" name="answer1" size="5" id="forceForAcc1" value="50">
+
+                                  / m 
+                                      <select id="mySelect1" onchange="setMass1()">
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
+                                        <option value="60">60</option>
+                                        <option value="70">70</option>
+                                       
+                                      </select> <br>
+
+                                      <svg height="20" width="20">
+                            <circle cx="10" cy="10" r="5" stroke="green" stroke-width="3" fill="green" />
+                            </svg>
+                              Green car : a <input type="text"  size="5" id="textField3" disabled > =
+
+                              F 
+                               <input type="text" name="answer1" size="5" id="forceForAcc2" value="50">
+
+
+                                  / m 
+                                      <select id="mySelect2" onchange="setMass2()">
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
+                                        <option value="60">60</option>
+                                        <option value="70">70</option>
+                                      </select> 
+
+                              <input type="button" id="startForAcc" value="GO!" onclick="startForAcc()" /><br>
+               <button onclick="myFunction()" class="colored" >Reset</button>
+                             <!-- <input type="button" value="Reset" id="reset">-->
+                              </div>
+                          </section>
+
+                        
+                         <div id="canvasesdiv" style="position:relative; width:620px; height:320px; float:right; margin-top:-170px; margin-right:30px;">
+                            <canvas id="graphCanvas1"
+                            style="z-index: 1;
+                            background:#F0F0F0;
+                            position:absolute;
+                            left:0px;
+                            top:0px;
+                            " height="320px" width="620">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                            </canvas>
+                            <canvas id="graphCanvas2"
+                            style="z-index: 2;
+                            position:absolute;
+                            left:0px;
+                            top:0px;
+                            " height="320px" width="620">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                            </canvas>
+                         
+                            </div>
+                      </div>
+						
+						
+                    </header>
+					
+					<h5>Millisecond Timer</h5>
+						<form name="d">
+							<b>Red car: </b> Travelled <i><span id="distance1">0</span></i> meters in <input type="text" id="timerText1" size="8" name="d2a" disabled> seconds<br/>
+              <b>Green car: </b> Travelled <i><span id="distance2">0</span></i> meters in <input type="text" id="timerText2" size="8" name="d2b" disabled> seconds
+
+						<!--	<input type="button" value="Start/Stop" onclick="startstoptimer()">
+							<input type="reset" onclick="resettimer()"> -->
+						</form>
+
+                    <section>
+                        <div id="racetrack">
+
+                        <canvas id="myCanvas" width="1280" height="330" style="border:0px solid #d3d3d3">
+                        </canvas>
+    
+                        </div> 
+                    </section>
+
+          <!-- </div> -->
+                    </section>
+                    
+                        <div style="text-align: center;" id="raceInfoContainer" class="clearfix">
+                            <h3>Results</h3>
+                            <div id="raceInfo1" class="raceInfo">Red ball<span></span></div>
+                            <div id="raceInfo2" class="raceInfo">Blue ball<span></span></div>
+                        </div>
+
+
+
+                    
+                    <footer>
+                    </footer>
+                </article>
+
+            </div> <!-- #main -->
+        </div> <!-- #main-container -->
+
+        <div class="footer-container">
+            <footer class="wrapper">
+                <h3> © 2016 Summer Research Program.</h3>
+            </footer>
+        </div>
+      </div>
+        <script>
+			
+			function myFunction() {
+				location.reload();
+			}
+
+            function setMass1()
+            {
+                var mass = document.getElementById("mySelect1").selectedIndex;
+                mass = document.getElementsByTagName("option")[mass].value;
+                rad[0] = mass;
+            }
+            function setMass2()
+            {
+                var mass = document.getElementById("mySelect2").selectedIndex;
+                mass = document.getElementsByTagName("option")[mass].value;
+              rad[1] = mass;
+            }
+
+              var animating = false;
+
+              var x = [60, 60];  //ball position on x axy
+              var y = [75, 250]; //ball position on y
+              var rad = [20, 20]; //ball size 
+              var color = ["red", "blue"];
+              var velX = [0, 0];
+              var velY = [0, 0 ];
+              //var accX = [1, .5, .25];
+              //var accY = [0, 0, 0];
+              var accX = [1, 1];
+              var accY = [0, 0];
+
+              var timeMillisecond = 0;
+
+              setInterval(update, 25);
+              //alert( "Hello!");
+              var canvasElement = document.getElementById("myCanvas");
+              var graphCanvas1 = document.getElementById("graphCanvas1");
+              var graphCanvas2 = document.getElementById("graphCanvas2");
+              var maxTime;
+              var ctx = canvasElement.getContext("2d");
+
+              var startingPositions = [60, 60];
+
+             function myFunction7() {
+             var x = document.getElementById("mySelect").selectedIndex;
+             alert(document.getElementsByTagName("option")[x].value);
+
+            } 
+
+              function  startForAcc()
+              {
+              
+                //x axis
+                var force = document.getElementById("forceForAcc1").value; 
+                var mass = document.getElementById("mySelect1").selectedIndex;
+                mass = document.getElementsByTagName("option")[mass].value;
+
+                var acc = force / mass;
+
+                document.getElementById("textField2").value = acc;
+
+
+                start();
+
+                accX[0] = acc;
+
+
+                var force1 = document.getElementById("forceForAcc2").value; 
+                var mass1 = document.getElementById("mySelect2").selectedIndex;
+                mass1 = document.getElementsByTagName("option")[mass1].value;
+
+                var acc1 = force1 / mass1;
+
+                document.getElementById("textField3").value = acc1;
+
+                accX[1] = acc1;
+
+                rad[0] = mass ;
+                rad[1] = mass1 ;
+
+                //findTime(x[0], accX[0])
+                var t1 = findTime(startingPositions[0], accX[0])
+                var t2 = findTime(startingPositions[1], accX[1])
+                
+                if (t1 == Infinity) {
+                  t1 = 0
+                }
+                if (t2 == Infinity) {
+                  t2 = 0
+                }
+
+                maxTime = t1
+                if (t2 > t1) {
+                    maxTime = t2
+                } 
+                if (maxTime == 0) {
+                  maxTime = 1000
+                }
+                console.log(maxTime)
+                /*create graph*/
+              
+
+
+                start();
+				  
+          				while (animating) {  
+          				  if (timer > 0) {
+          					return;
+          				  }
+          				  display();
+          				}
+            
+                }
+
+
+              function  start()
+              {
+
+
+                animating = true;
+                x[0] = 60;
+                x[1] = 60;
+               
+                velX[0] = 0;
+                velX[1] = 0;
+            
+              }
+            
+              function update()
+              {
+                       
+                ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
+
+                for( i=0; i<x.length; i++ )
+                {
+                  draw( ctx, x[i], y[i], rad[i], color[i]);
+                }
+                
+                if (animating == false ) return;
+                
+                for( i=0; i < x.length; i++ )
+                {
+                  var t = timeMillisecond/1000
+                  //x = x0 + v0t + ½at2
+                  x[i] = startingPositions[i] + (0.5 * accX[i] * Math.pow(t,2))
+                }
+
+                if (timeMillisecond < maxTime) {
+                  var ctxGraph1 = graphCanvas1.getContext("2d");
+                  var ctxGraph2 = graphCanvas2.getContext("2d");
+
+                  //what ever is larger
+                  //red car
+                  var gx = timeMillisecond/(maxTime/graphCanvas1.width)//1.25
+                  var gy1 = x[0]/(canvasElement.width/graphCanvas1.height)//4
+                  
+                  //greencar
+                 
+                  var gy2 = x[1]/(canvasElement.width/graphCanvas1.height)//4
+   
+
+              
+                  console.log("g1 " + timeMillisecond + " " + x[0] )
+                 // console.log("g2 " + timeMillisecond + " " x[1] )
+
+                  ctxGraph1.lineTo(gx, graphCanvas1.height - gy1);
+                  ctxGraph1.strokeStyle = '#ff0000';
+                  ctxGraph1.stroke();
+
+                  ctxGraph2.lineTo(gx, graphCanvas1.height - gy2);
+                  ctxGraph2.strokeStyle = 'green';
+                  ctxGraph2.stroke();
+                }
+                 if (animating){
+                  timeMillisecond += 25
+                }   
+              }
+
+              function draw(context, x, y, radius, color )
+              {
+              		
+                    base_image = new Image();
+                    
+                    if (color == "red") {
+                      base_image.src = 'img/redCar.png';
+                    } else { 
+                      base_image.src = 'img/greenCar.png';
+                    }
+                    context.drawImage(base_image, x, y);
+
+
+
+                    /*if (x >= canvasElement.width) {
+                      console.log(x + " " + y)
+                    }*/
+                    //console.log("width" + canvasElement.width)
+                    //1300
+                  
+                    //context.beginPath();
+                    //context.arc(x, y, radius, 0, 2*Math.PI, true);
+                    //context.arc(100, 225, 50, 0, 2 * Math.PI);
+                    //context.lineWidth = 15;
+
+                    // line color
+                    //context.strokeStyle = color;
+                    //context.stroke();
+              }
+
+              
+			
+			
+			/* START OF TIMER */ 
+			var millisec = 0;
+			var seconds = 0;
+			var timer;
+
+			function display(){
+
+			  if (millisec >= 9){
+				 millisec=0
+				 seconds+=1
+
+
+			  } else {
+         millisec+=1 
+        }
+
+        var cont = false
+       if (x[0] <= canvasElement.width) {
+          document.d.d2a.value = seconds + "." + millisec;
+          document.getElementById("distance1").innerHTML = Math.round(x[0] * 100) / 100
+          cont = true
+          
+        } 
+        if (x[1] <= canvasElement.width) {
+          document.d.d2b.value = seconds + "." + millisec;
+          document.getElementById("distance2").innerHTML =  Math.round(x[1] * 100) / 100
+          cont = true
+        } 
+
+        if (cont) {
+          timer = setTimeout("display()",100);
+        }
+        //display time  and distance travelled
+
+			}
+
+			/*function starttimer() {
+
+			  if (timer > 0) {
+				return;
+			  }
+			  display();	
+			}*/
+			function stoptimer() {
+			  clearTimeout(timer);
+			  timer = 0;
+			}
+
+
+			function resettimer() {
+				stoptimer();
+				millisec = 0;
+				seconds = 0;
+			}
+		/* END OF TIMER */
+
+    function findTime(x,a) {
+      //deriving formula from x = x0 + v0t + ½at2
+      //t = square root (2(XF - x) / a ) 
+      return Math.sqrt((2 * (canvasElement.width - x)) / a) * 1000;
+    }
+  			// reset the race
+          $('#reset').click(function() {
+
+              var x = startingPositions
+              //$('.ball').css('left','0');
+              $('.textField2 textField2').text('');
+						
+						stoptimer();
+						millisec = 0;
+						seconds = 0;
+                    });
+			
+        </script>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>

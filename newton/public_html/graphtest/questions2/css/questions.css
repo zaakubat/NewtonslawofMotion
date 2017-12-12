@@ -1,0 +1,48 @@
+#question_div {
+	min-height: 150px;
+}
+.question {
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+.choice {
+	display: inline-block;
+	border: 2px solid #F89542;
+	white-space: nowrap;
+	border-radius: 5px;
+	padding: 5px 20px 2px 20px;
+	height: 30px;
+	background: #FDE4CE;
+	font-size: 20px;
+	margin-right: 20px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+.correct {
+	color: #248f24;
+}
+.incorrect {
+	color: #e60000;
+}
+button {
+	background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor:pointer;
+}
+.bold {
+	font-weight: bold
+}
+.disabledBtn {
+	background: grey;
+	color: black;
+	pointer-events:none;
+}
+#checkmark {
+	margin-left: 4px;
+}
